@@ -12,6 +12,9 @@ To build a one-page application using REACT.  The app will show a google map wit
 
 The user of the app will be able to view a set of locations that provide information, images, links etc about that location.
 
+The app must be responsive and be accessible.  The use of a service worker to allow for offline usage.
+See project [rubric](https://review.udacity.com/#!/rubrics/1351/view) for all project specifications.
+
 ## How To Run This App
 
 **Dependencies**
@@ -26,6 +29,20 @@ The user of the app will be able to view a set of locations that provide informa
 ## Requirements
 
 **Meets Specifications**
+
+### Interface Design
+* **Responsiveness**
+		* All application components render on-screen in a responsive manner.
+* **Usability**
+		* All application components are usable across modern desktop, tablet, and phone browsers.
+
+### Application Functionality
+### Asynchronous Data Usage
+### Documentation
+### Location Details Functionality
+### Accessibility
+### Offline Use
+### Application Architecture
 
 ### License
 
