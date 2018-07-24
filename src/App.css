@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: #222;
+  background: #0e0e13;
   padding: 20px;
   color: white;
 }
@@ -13,12 +13,11 @@
 
 #map {
   margin: 0;
-  width: 70vw;
+  width: 70%;
   height: 100vh;
 }
 
 .map-container {
-  display: flex;
-  width: 85%;
+  width: 70%;
   height: 100vh;
 }

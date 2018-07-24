@@ -9,7 +9,7 @@ export class MapContainer extends React.Component {
     }
 
     return (
-      <div id='map' role="application">
+      <div id='map' role="application" className="map-container">
         <Map
           google={this.props.google}
           initialCenter={{
