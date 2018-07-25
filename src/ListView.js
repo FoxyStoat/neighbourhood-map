@@ -11,10 +11,10 @@ class ListView extends React.Component {
 
           {/* A view list of location names which displays
           all locations by default */}
-
           <ul role="navigation" className="location-list">
             {locations.map(location => (
               <li
+                key={location.title}
                 className="location">
                 {location.title}
               </li>

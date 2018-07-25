@@ -27,6 +27,7 @@ export class MapContainer extends React.Component {
           {/* Map Markers */}
           {locations.map(location => (
             <Marker
+              key={location.title}
               title={location.title}
               position={location.position}
             />
