@@ -3,12 +3,22 @@ import LocationFilter from './LocationFilter';
 
 class ListView extends React.Component {
   render() {
+    const { locations } = this.props;
     return (
       <div className="list-view-container">
         <h2>Locations</h2>
           <LocationFilter />
-          <ul role="navigation" id="drawer" className="location-list">
-            <li className="location">Location</li>
+
+          {/* A view list of location names which displays
+          all locations by default */}
+
+          <ul role="navigation" className="location-list">
+            {locations.map(location => (
+              <li
+                className="location">
+                {location.title}
+              </li>
+            ))}
           </ul>
       </div>
     )
