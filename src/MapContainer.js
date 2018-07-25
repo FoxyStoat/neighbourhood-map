@@ -2,10 +2,10 @@ import React from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 export class MapContainer extends React.Component {
-  render() {
 
+  state = {
     // List of locations, hardcoded
-    const locations = [
+    locations: [
       // Activity Places to visit
       {title: "Cliff Lift", position: {lat: 54.5862, lng: -0.9706}},
       {title: "Valley Gardens", position: {lat: 54.5844, lng: -0.9682}},
@@ -35,8 +35,15 @@ export class MapContainer extends React.Component {
       // Hotels, b&b's
       {title: "Brockley Hall", position: {lat: 54.5821, lng: -0.9714}},
       {title: "Rushpool Hall", position: {lat: 54.5757, lng: -0.9717}},
+    ]
+  }
 
-    ];
+    render() {
+    console.log('Props', this.props);
+    console.log('Props', this.state);
+
+    const { locations } = this.state;
+    const { google } = this.props;
 
     const style = {
       width: '100vw',
@@ -47,7 +54,7 @@ export class MapContainer extends React.Component {
     return (
       <div id="map-container" role="application" style={style}>
         <Map
-          google={this.props.google}
+          google={google}
           initialCenter={{
             lat: 54.58488,
             lng: -0.97010
