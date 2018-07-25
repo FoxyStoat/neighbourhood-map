@@ -60,4 +60,9 @@ main-container
   background: #001;
   height: 40vh;
   color: #fff;
+  padding: 2em;
+}
+
+.location-list .location {
+  list-style: none;
 }
