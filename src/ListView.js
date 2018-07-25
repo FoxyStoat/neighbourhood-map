@@ -1,19 +1,16 @@
 import React from 'react';
+import LocationFilter from './LocationFilter';
 
-class ListView extends React.Component {
-  render() {
-    return (
-      <div className="list-view-container">
+function ListView (props) {
+  return (
+    <div className="list-view-container">
+      <h2>Locations</h2>
+        <LocationFilter />
         <ul role="navigation" id="drawer" className="location-list">
           <li className="location">Location</li>
-          <li className="location">Location</li>
-          <li className="location">Location</li>
-          <li className="location">Location</li>
-          <li className="location">Location</li>
         </ul>
-      </div>
-    )
-  };
+    </div>
+  )
 }
 
 export default ListView;
