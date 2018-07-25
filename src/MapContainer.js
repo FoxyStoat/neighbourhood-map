@@ -3,6 +3,18 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 export class MapContainer extends React.Component {
   render() {
+
+    // List of our locations, hardcoded
+    const locations = [
+      {title: "Cliff Lift", location: {lat: 54.5862, lng: -0.9706}},
+      {title: "Vally Gardens", location: {lat: 54.5844, lng: -0.9682}},
+      {title: "Pier", location: {lat: 54.5881, lng: -0.9696}},
+      {title: "Miniature Railway", location: {lat: 54.5831, lng: -0.9687}},
+      {title: "Huntcliff", location: {lat: 54.588333, lng:  	-0.935556}},
+      {title: "The old mortuary", location: {lat: 54.575821, lng:  -0.951769}},
+      {title: "Circle Sculpture aka Charm Bracelet", location: {lat: 54.575821, lng:  -0.951769}},
+    ];
+
     const style = {
       width: '100vw',
       height: '60vh',
