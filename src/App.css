@@ -1,23 +1,61 @@
+/*----------------------------------
+Global Stlyes
+------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* border box fix */
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	/*one Em roughly ten pixels (16 x 62.5% = 10)*/
+	font-size: 62.5%;
+	letter-spacing: 1.5px;
+	margin: 0;
+}
+
+/*----------------------------------
+Header
+------------------------------------*/
+
 .App-header {
   display: flex;
   justify-content: center;
   text-align: center;
   background: #0e0e13;
-  padding: 20px;
+  padding: 2.5em;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 
-#map {
-  margin: 0;
-  width: 70%;
+/*----------------------------------
+main-container
+------------------------------------*/
+
+.main-container {
+  width: 100%;
+  display: flex;
+}
+
+#map-container {
+  width: 75vw;
   height: 100vh;
 }
 
-.map-container {
-  width: 70%;
+.list-view-container {
+  width: 25vw;
   height: 100vh;
 }
