@@ -32,9 +32,9 @@ Header
   display: flex;
   justify-content: center;
   text-align: center;
-  background: #0e0e13;
+  background: #001;
   padding: 2.5em;
-  color: white;
+  color:#fff;
 }
 
 .App-title {
@@ -48,14 +48,16 @@ main-container
 .main-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 #map-container {
-  width: 75vw;
-  height: 100vh;
+  width: 100vw;
+  height: 60vh;
 }
 
 .list-view-container {
-  width: 25vw;
-  height: 100vh;
+  background: #001;
+  height: 40vh;
+  color: #fff;
 }

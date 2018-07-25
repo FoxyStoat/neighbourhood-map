@@ -4,12 +4,12 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
 export class MapContainer extends React.Component {
   render() {
     const style = {
-      width: '70%',
-      height: '100vh',
+      width: '100vw',
+      height: '60vh',
     }
 
     return (
-      <div id="map-container" role="application">
+      <div id="map-container" role="application" style = {style}>
         <Map
           google={this.props.google}
           initialCenter={{
@@ -23,6 +23,9 @@ export class MapContainer extends React.Component {
     );
   }
 }
+
+// lat: 54.58237,
+// lng: -0.97367
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyC7CpjmKGXh5uri0CQ2h5wad2l5dWteiJE'
