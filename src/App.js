@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import MapContainer from './MapContainer';
 import ListView from './ListView';
+import sortBy from 'sort-by';
 
 class NeighbourhoodMapApp extends React.Component {
 
@@ -29,20 +30,22 @@ class NeighbourhoodMapApp extends React.Component {
       {title: "Alexandra Vaults Pub", position: {lat: 54.5849, lng: -0.9716}},
       {title: "The Ship Inn", position: {lat: 54.5849, lng: -0.9651}},
       // Food & Drink
-      {title: "Vista Mar", position: {lat: 54.5854, lng: -0.9689}},
-      {title: "Coco & Rum", position: {lat: 54.5831, lng: -0.9742}},
+      {title: "Vista Mar Restaurant", position: {lat: 54.5854, lng: -0.9689}},
+      {title: "Coco & Rum Restaurant", position: {lat: 54.5831, lng: -0.9742}},
       {title: "Rapps Cafe", position: {lat: 54.5841, lng: -0.9726}},
       {title: "Oscars Fish And Chips", position: {lat: 54.5864, lng: -0.9720}},
       {title: "The Guns Bar", position: {lat: 54.5841, lng: -0.9728}},
       // Hotels, b&b's
-      {title: "Brockley Hall", position: {lat: 54.5821, lng: -0.9714}},
-      {title: "Rushpool Hall", position: {lat: 54.5757, lng: -0.9717}},
+      {title: "Brockley Hall Hotel", position: {lat: 54.5821, lng: -0.9714}},
+      {title: "Rushpool Hall Hotel", position: {lat: 54.5757, lng: -0.9717}},
     ]
   }
 
   render() {
     console.log('Props', this.state);
     const { locations } = this.state;
+
+    locations.sort(sortBy('title'));
 
     return (
       <div className="App">
