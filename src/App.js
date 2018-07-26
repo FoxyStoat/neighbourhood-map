@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import sortBy from 'sort-by';
 
-import MapContainer from './MapContainer';
+import Map from './Map';
 import ListView from './ListView';
 
 class NeighbourhoodMapApp extends React.Component {
@@ -39,13 +39,13 @@ class NeighbourhoodMapApp extends React.Component {
       // Hotels, b&b's
       {title: "Brockley Hall Hotel", position: {lat: 54.5821, lng: -0.9714}},
       {title: "Rushpool Hall Hotel", position: {lat: 54.5757, lng: -0.9717}},
-    ]
+    ],
+    markers: []
   }
 
   render() {
     // console.log('Props', this.state);
     const { locations } = this.state;
-    const { google } = this.props;
     // Sort location list by title
     locations.sort(sortBy('title'));
 
@@ -55,10 +55,7 @@ class NeighbourhoodMapApp extends React.Component {
           <h1 className="App-title">Visit Saltburn By The Sea</h1>
         </header>
         <div className="main-container">
-          <MapContainer
-            locations={locations}
-            google={google}
-          />
+
           <ListView
             locations={locations}
           />
