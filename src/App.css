@@ -51,7 +51,7 @@ main-container
   flex-direction: column;
 }
 
-#map-container {
+#map {
   width: 100vw;
   height: 60vh;
 }
