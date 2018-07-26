@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
+import sortBy from 'sort-by';
+
 import MapContainer from './MapContainer';
 import ListView from './ListView';
-import sortBy from 'sort-by';
 
 class NeighbourhoodMapApp extends React.Component {
 
@@ -42,9 +43,10 @@ class NeighbourhoodMapApp extends React.Component {
   }
 
   render() {
-    console.log('Props', this.state);
+    // console.log('Props', this.state);
     const { locations } = this.state;
-
+    const { google } = this.props;
+    // Sort location list by title
     locations.sort(sortBy('title'));
 
     return (
@@ -54,7 +56,9 @@ class NeighbourhoodMapApp extends React.Component {
         </header>
         <div className="main-container">
           <MapContainer
-            locations={locations}/>
+            locations={locations}
+            google={google}
+          />
           <ListView
             locations={locations}
           />
