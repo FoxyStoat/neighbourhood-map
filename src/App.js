@@ -22,8 +22,6 @@ class NeighbourhoodMapApp extends React.Component {
     // Sort location list by title
     locations.sort(sortBy('title'));
 
-
-
     return (
       <div className="App">
         <header className="App-header">
