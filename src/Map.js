@@ -10,6 +10,7 @@ class Map extends React.Component{
 
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
     const google = window.google;
+    const { locations } = this.props;
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
           this.map = new window.google.maps.Map(this.refs.map, {
@@ -19,12 +20,12 @@ class Map extends React.Component{
             zoom: 15,
             mapTypeId: 'hybrid'
           });
-
-          let lift = {"lat": 54.5862, "lng": -0.9706};
-          let marker = new google.maps.Marker({
-            position: lift,
-            map: this.map,
-            title: "Cliff Lift"
+          locations.map((location) => {
+            let marker = new google.maps.Marker({
+              position: location.position,
+              map: this.map,
+              title: location.title
+            });
           });
         }else {
           this.props.onError();
