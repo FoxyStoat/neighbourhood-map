@@ -12,6 +12,7 @@ class NeighbourhoodMapApp extends React.Component {
   state = {
     // List of locations, from json file data
     locations: data,
+    markers: [],
   };
 
 
