@@ -6,8 +6,10 @@ class Map extends React.Component{
       super(props);
       this.map = null;
   }
+
+
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
-    // const google = window.google;
+    const google = window.google;
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
           this.map = new window.google.maps.Map(this.refs.map, {
@@ -18,29 +20,15 @@ class Map extends React.Component{
             mapTypeId: 'hybrid'
           });
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          this.map.setCenter(pos);
-
-          const marker = new window.google.maps.Marker({
-            position: pos,
+          let lift = {"lat": 54.5862, "lng": -0.9706};
+          let marker = new google.maps.Marker({
+            position: lift,
             map: this.map,
-            title: 'Hello World!'
+            title: "Cliff Lift"
           });
-        }, () => {
-          console.log('navigator disabled');
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        console.log('navigator disabled');
+        }else {
+          this.props.onError();
       }
-    }
-    else this.props.onError();
     }
   }
 
