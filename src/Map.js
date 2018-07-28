@@ -13,7 +13,7 @@ class Map extends React.Component{
     const { locations } = this.props;
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
-          this.map = new window.google.maps.Map(this.refs.map, {
+          this.map = new google.maps.Map(this.refs.map, {
             center: {
             lat: 54.58488,
             lng: -0.97010},
@@ -24,7 +24,8 @@ class Map extends React.Component{
             let marker = new google.maps.Marker({
               position: location.position,
               map: this.map,
-              title: location.title
+              title: location.title,
+              animation: google.maps.Animation.DROP,
             });
           });
         }else {
