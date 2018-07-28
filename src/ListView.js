@@ -14,9 +14,9 @@ class ListView extends React.Component {
           <ul role="navigation" className="location-list">
             {locations.map(location => (
               <li
-                key={location.title}
+                key={location.id}
                 className="location">
-                {location.title}
+                  {location.title}
               </li>
             ))}
           </ul>
