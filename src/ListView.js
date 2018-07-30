@@ -6,7 +6,6 @@ class ListView extends React.Component {
     const { locations } = this.props;
     return (
       <div className="list-view-container">
-        <h2>Locations</h2>
           <LocationFilter />
 
           {/* A view list of location names which displays
