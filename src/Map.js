@@ -8,7 +8,7 @@ class Map extends React.Component {
     const { locations, markers } = this.props;
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
-          let map = new google.maps.Map(this.refs.map, {
+          const map = new google.maps.Map(this.refs.map, {
             center: {
             lat: 54.58488,
             lng: -0.97010},
@@ -16,12 +16,12 @@ class Map extends React.Component {
             mapTypeId: 'hybrid'
           });
             // Info Window
-            let largeInfowindow = new google.maps.InfoWindow();
+            const largeInfowindow = new google.maps.InfoWindow();
             // Bounds fit everything we want the user to see
-            let bounds = new google.maps.LatLngBounds();
+            const bounds = new google.maps.LatLngBounds();
               // Markers
               locations.map((location) => {
-                let marker = new google.maps.Marker({
+                const marker = new google.maps.Marker({
                   position: location.position,
                   map: map,
                   title: location.title,
@@ -39,7 +39,7 @@ class Map extends React.Component {
                 });
                 // Tell the map to fit itself to these bounds
                 map.fitBounds(bounds);
-              });
+              }); //end of locations .map
 
           // Populate infowindows when a marker is clicked.
           function populateInfoWindow(marker, infowindow) {
@@ -53,12 +53,12 @@ class Map extends React.Component {
                 infowindow.setMarker = null;
               });
             }
-          }
+          } // End populate info window function
       }else {
         this.props.onError();
       }
     }
-  }
+  } // End of componentWillReceiveProps
 
   render(){
     return (
