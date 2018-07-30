@@ -1,11 +1,7 @@
 import React from 'react';
 import scriptLoader from 'react-async-script-loader';
 
-class Map extends React.Component{
-  constructor(props) {
-      super(props);
-      this.map = null;
-  }
+class Map extends React.Component {
 
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
     const google = window.google;
@@ -32,12 +28,13 @@ class Map extends React.Component{
                 id: location.id,
                 animation: google.maps.Animation.DROP,
               });
-              marker.addListener('click', function() {
-                infoWindow.open(this.map, marker);
-              });
               // Push each marker to markers array
               markers.push(marker);
               console.log('marker:', marker);
+              // Add click event to open info window when marker is clicked
+              marker.addListener('click', function() {
+                infoWindow.open(this.map, marker);
+              });
             });
         }else {
           this.props.onError();

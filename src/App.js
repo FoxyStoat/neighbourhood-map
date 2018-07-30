@@ -15,7 +15,6 @@ class NeighbourhoodMapApp extends React.Component {
     markers: [],
   };
 
-
   render() {
     console.log('Props', this.state);
     console.log('this:', this);
