@@ -19,7 +19,7 @@ class NeighbourhoodMapApp extends React.Component {
   render() {
     console.log('Props', this.state);
     console.log('this:', this);
-    const { locations } = this.state;
+    const { locations, markers } = this.state;
     // Sort location list by title
     locations.sort(sortBy('title'));
 
@@ -31,6 +31,7 @@ class NeighbourhoodMapApp extends React.Component {
         <div className="main-container">
           <Map
             locations={locations}
+            markers={this.state.markers}
           />
           <ListView
             locations={locations}

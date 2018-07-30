@@ -7,10 +7,9 @@ class Map extends React.Component{
       this.map = null;
   }
 
-
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
     const google = window.google;
-    const { locations } = this.props;
+    const { locations, markers } = this.props;
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
           this.map = new google.maps.Map(this.refs.map, {
@@ -25,15 +24,18 @@ class Map extends React.Component{
               position: location.position,
               map: this.map,
               title: location.title,
+              id: location.id,
               animation: google.maps.Animation.DROP,
             });
+            // Push each marker to markers array
+           markers.push(marker);
+           console.log('marker:', marker)
           });
         }else {
           this.props.onError();
       }
     }
   }
-
   render(){
     return (
     <div>
