@@ -8,7 +8,7 @@ class Map extends React.Component {
     const { locations, markers } = this.props;
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
-          this.map = new google.maps.Map(this.refs.map, {
+          let map = new google.maps.Map(this.refs.map, {
             center: {
             lat: 54.58488,
             lng: -0.97010},
@@ -16,31 +16,44 @@ class Map extends React.Component {
             mapTypeId: 'hybrid'
           });
             // Info Window
-            let infoWindow = new google.maps.InfoWindow({
-              content: 'Content'
-            });
-            // Markers
-            locations.map((location) => {
-              let marker = new google.maps.Marker({
-                position: location.position,
-                map: this.map,
-                title: location.title,
-                id: location.id,
-                animation: google.maps.Animation.DROP,
+            let largeInfowindow = new google.maps.InfoWindow();
+              // Markers
+              locations.map((location) => {
+                let marker = new google.maps.Marker({
+                  position: location.position,
+                  map: map,
+                  title: location.title,
+                  id: location.id,
+                  animation: google.maps.Animation.DROP,
+                });
+                // Push each marker to markers array
+                markers.push(marker);
+                console.log('marker:', marker);
+                // Add click event to open info window when marker is clicked
+                marker.addListener('click', function() {
+                  populateInfoWindow(this, largeInfowindow);
+                });
               });
-              // Push each marker to markers array
-              markers.push(marker);
-              console.log('marker:', marker);
-              // Add click event to open info window when marker is clicked
-              marker.addListener('click', function() {
-                infoWindow.open(this.map, marker);
+
+          // Populate infowindows when a marker is clicked.
+          function populateInfoWindow(marker, infowindow) {
+            // Check to make sure the infowindow is not already opened on this marker.
+            if (infowindow.marker !== marker) {
+              infowindow.marker = marker;
+              infowindow.setContent('<div>' + marker.title + '</div>');
+              infowindow.open(map, marker);
+              // Make sure the marker property is cleared if the infowindow is closed.
+              infowindow.addListener('closeclick',function(){
+                infowindow.setMarker = null;
               });
-            });
-        }else {
-          this.props.onError();
+            }
+          }
+      }else {
+        this.props.onError();
       }
     }
   }
+
   render(){
     return (
     <div>
