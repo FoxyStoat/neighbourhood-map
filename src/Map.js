@@ -17,6 +17,8 @@ class Map extends React.Component {
           });
             // Info Window
             let largeInfowindow = new google.maps.InfoWindow();
+            // Bounds fit everything we want the user to see
+            let bounds = new google.maps.LatLngBounds();
               // Markers
               locations.map((location) => {
                 let marker = new google.maps.Marker({
@@ -29,10 +31,14 @@ class Map extends React.Component {
                 // Push each marker to markers array
                 markers.push(marker);
                 console.log('marker:', marker);
+                // Extend boundaries of the map for each marker
+                bounds.extend(marker.position);
                 // Add click event to open info window when marker is clicked
                 marker.addListener('click', function() {
                   populateInfoWindow(this, largeInfowindow);
                 });
+                // Tell the map to fit itself to these bounds
+                map.fitBounds(bounds);
               });
 
           // Populate infowindows when a marker is clicked.
