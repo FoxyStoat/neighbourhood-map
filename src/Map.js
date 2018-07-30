@@ -19,18 +19,26 @@ class Map extends React.Component{
             zoom: 15,
             mapTypeId: 'hybrid'
           });
-          locations.map((location) => {
-            let marker = new google.maps.Marker({
-              position: location.position,
-              map: this.map,
-              title: location.title,
-              id: location.id,
-              animation: google.maps.Animation.DROP,
+            // Info Window
+            let infoWindow = new google.maps.InfoWindow({
+              content: 'Content'
             });
-            // Push each marker to markers array
-           markers.push(marker);
-           console.log('marker:', marker)
-          });
+            // Markers
+            locations.map((location) => {
+              let marker = new google.maps.Marker({
+                position: location.position,
+                map: this.map,
+                title: location.title,
+                id: location.id,
+                animation: google.maps.Animation.DROP,
+              });
+              marker.addListener('click', function() {
+                infoWindow.open(this.map, marker);
+              });
+              // Push each marker to markers array
+              markers.push(marker);
+              console.log('marker:', marker);
+            });
         }else {
           this.props.onError();
       }

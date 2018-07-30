@@ -31,7 +31,7 @@ class NeighbourhoodMapApp extends React.Component {
         <div className="main-container">
           <Map
             locations={locations}
-            markers={this.state.markers}
+            markers={markers}
           />
           <ListView
             locations={locations}
