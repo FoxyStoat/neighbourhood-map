@@ -10,7 +10,6 @@ class LocationFilter extends React.Component {
         <h2>Locations List</h2>
         {JSON.stringify(query)}
         <form
-
           role="search">
           <input
             role="search"

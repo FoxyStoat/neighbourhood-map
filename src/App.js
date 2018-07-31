@@ -17,6 +17,7 @@ class NeighbourhoodMapApp extends React.Component {
     query: ''
   };
 
+  // Update the state of query
   updateQuery = (query) => {
     this.setState({ query: query });
   }
@@ -26,6 +27,17 @@ class NeighbourhoodMapApp extends React.Component {
     console.log('this:', this);
     const { locations, markers, query } = this.state;
 
+    // Filter our locations based of a certain pattern
+    let showingLocations;
+     // If there is a specific query
+    if (query) {
+      // If there are any special characters in our query
+			// escape them and i = ignore case
+			const match = new RegExp(escapeRegExp(query), 'i');
+			showingLocations = locations.filter((location) => match.test(location.title));
+		}else{
+			showingLocations = locations;
+		}
     // Sort location list by title
     locations.sort(sortBy('title'));
 
@@ -44,6 +56,7 @@ class NeighbourhoodMapApp extends React.Component {
             markers={markers}
             query={query}
             updateQuery={this.updateQuery}
+            showingLocations={showingLocations}
           />
         </div>
       </div>

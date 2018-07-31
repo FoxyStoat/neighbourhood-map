@@ -5,7 +5,7 @@ import LocationFilter from './LocationFilter';
 class ListView extends React.Component {
   render() {
 
-    const { locations, markers, query, updateQuery } = this.props;
+    const { locations, markers, query, updateQuery, showingLocations } = this.props;
 
     return (
       <div className="list-view-container">
@@ -19,7 +19,7 @@ class ListView extends React.Component {
           {/* A view list of location names which displays
           all locations by default */}
           <ul role="navigation" className="location-list">
-            {locations.map(location => (
+            {showingLocations.map(location => (
               <li
                 key={location.id}
                 className="location">
