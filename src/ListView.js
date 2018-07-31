@@ -13,7 +13,7 @@ class ListView extends React.Component {
             locations={locations}
             markers={markers}
             query={query}
-            onChange={updateQuery}
+            updateQuery={updateQuery}
           />
 
           {/* A view list of location names which displays

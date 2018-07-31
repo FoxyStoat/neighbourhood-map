@@ -43,7 +43,7 @@ class NeighbourhoodMapApp extends React.Component {
             locations={locations}
             markers={markers}
             query={query}
-            onChange={this.updateQuery}
+            updateQuery={this.updateQuery}
           />
         </div>
       </div>
