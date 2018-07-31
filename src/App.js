@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 // Data of locations in JSON file
 import * as data from './Data.json';
-import sortBy from 'sort-by';
 import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by';
+
 import Map from './Map';
 import ListView from './ListView';
 
@@ -13,14 +14,18 @@ class NeighbourhoodMapApp extends React.Component {
     // List of locations, from json file data
     locations: data,
     markers: [],
-    query: '',
-    queryResults: [] // add markers that match query to this array
+    query: ''
   };
+
+  updateQuery = (query) => {
+    this.setState({ query: query });
+  }
 
   render() {
     console.log('Props', this.state);
     console.log('this:', this);
-    const { locations, markers, query, queryResults } = this.state;
+    const { locations, markers, query } = this.state;
+
     // Sort location list by title
     locations.sort(sortBy('title'));
 
@@ -38,7 +43,7 @@ class NeighbourhoodMapApp extends React.Component {
             locations={locations}
             markers={markers}
             query={query}
-            queryResults={queryResults}
+            onChange={this.updateQuery}
           />
         </div>
       </div>

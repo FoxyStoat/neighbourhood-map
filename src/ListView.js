@@ -1,12 +1,20 @@
 import React from 'react';
 import LocationFilter from './LocationFilter';
 
+
 class ListView extends React.Component {
   render() {
-    const { locations } = this.props;
+
+    const { locations, markers, query, updateQuery } = this.props;
+
     return (
       <div className="list-view-container">
-          <LocationFilter />
+          <LocationFilter
+            locations={locations}
+            markers={markers}
+            query={query}
+            onChange={updateQuery}
+          />
 
           {/* A view list of location names which displays
           all locations by default */}
