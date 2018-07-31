@@ -42,7 +42,7 @@ Header
 }
 
 /*----------------------------------
-main-container
+main-container - holds map and listview
 ------------------------------------*/
 
 .main-container {
@@ -57,13 +57,33 @@ main-container
 }
 
 .list-view-container {
+  display: flex;
+  flex-direction: column;
   background: #001;
   color: #fff;
   padding: 2em;
 }
 
+h2 {
+  margin-top: 0.5em;
+  font-size: 2em;
+  text-align: center;
+}
+
 .location-list .location {
   list-style: none;
+  padding: 0.5em;
+  font-size: 1.5em;
+}
+
+.location-filter-container {
+  align-self: center;
+}
+
+.location-search {
+  padding: 0.8em;
+  border-radius: 0.8em;
+  margin: 2em 0;
 }
 
 /*----------------------------------
@@ -71,6 +91,10 @@ Media Queries
 ------------------------------------*/
 
 @media screen and (min-width: 60em) {
+
+  .App-title {
+    font-size: 2em;
+  }
 
   .main-container {
     width: 100%;
@@ -80,11 +104,17 @@ Media Queries
 
   #map {
     width: 80vw;
-    height: 100vh;
+    height: 100%;
   }
 
   .list-view-container {
     background: #001;
     width: 20vw;
+    height: auto;
+    padding-top: 0;
+  }
+
+  .location-list .location {
+    font-size: 1.6em;
   }
 }
