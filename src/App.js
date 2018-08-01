@@ -13,8 +13,7 @@ class NeighbourhoodMapApp extends React.Component {
   state = {
     // List of locations, from json file data
     locations: data,
-    markers: [],
-    query: ''
+    query: '',
   };
 
   // Update the state of query
@@ -34,7 +33,7 @@ class NeighbourhoodMapApp extends React.Component {
       // If there are any special characters in our query
 			// escape them and i = ignore case
 			const match = new RegExp(escapeRegExp(query), 'i');
-			showingLocations = locations.filter((location) => match.test(location.title));
+      showingLocations = locations.filter((location) => match.test(location.title));
 		}else{
 			showingLocations = locations;
 		}
