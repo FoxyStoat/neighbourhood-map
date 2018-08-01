@@ -6,6 +6,7 @@ class Map extends React.Component {
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
     const google = window.google;
     const { locations, markers } = this.props;
+
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
           const map = new google.maps.Map(this.refs.map, {
@@ -20,6 +21,7 @@ class Map extends React.Component {
             // Bounds fit everything we want the user to see
             const bounds = new google.maps.LatLngBounds();
               // Markers
+              let locationWithMarkers = [];
               locations.map((location) => {
                 const marker = new google.maps.Marker({
                   position: location.position,
@@ -28,20 +30,25 @@ class Map extends React.Component {
                   id: location.id,
                   animation: google.maps.Animation.DROP,
                 });
-                // Push each marker to markers array
-                markers.push(marker);
-                console.log('marker:', marker);
-                // Extend boundaries of the map for each marker
-                bounds.extend(marker.position);
+
                 // Add click event to open info window when marker is clicked
                 marker.addListener('click', function() {
                   populateInfoWindow(this, largeInfowindow);
                 });
+
+                // Set marker as a property of each location
+                location.marker = marker;
+                // Push this new marker property to locations array
+                locationWithMarkers.push(location);
+                console.log('locations:', location);
+
+                // Extend boundaries of the map for each marker
+                bounds.extend(marker.position);
                 // Tell the map to fit itself to these bounds
                 map.fitBounds(bounds);
               }); //end of locations .map
 
-          // Populate infowindows when a marker is clicked.
+          // Populate infowindows with info when a marker is clicked.
           function populateInfoWindow(marker, infowindow) {
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
@@ -56,6 +63,7 @@ class Map extends React.Component {
           } // End populate info window function
       }else {
         this.props.onError();
+         // Handle error if map doesn't load
       }
     }
   } // End of componentWillReceiveProps
