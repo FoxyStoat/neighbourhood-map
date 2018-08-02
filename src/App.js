@@ -14,6 +14,7 @@ class NeighbourhoodMapApp extends React.Component {
     // List of locations, from json file data
     locations: data,
     query: '',
+    // markers: [],
   };
 
   // Update the state of query
@@ -24,7 +25,7 @@ class NeighbourhoodMapApp extends React.Component {
   render() {
     console.log('Props', this.state);
     console.log('this:', this);
-    const { locations, markers, query } = this.state;
+    const { locations, query, markers } = this.state;
 
     // Filter our locations based of a certain pattern
     let showingLocations;
@@ -34,9 +35,21 @@ class NeighbourhoodMapApp extends React.Component {
 			// escape them and i = ignore case
 			const match = new RegExp(escapeRegExp(query), 'i');
       showingLocations = locations.filter((location) => match.test(location.title));
+      // console.log('showingLocations', showingLocations)
+      locations.marker.setVisible(true);
+      // showingLocations.marker.setVisible(true);
 		}else{
+      locations.marker.setVisible(false);
+      // locations.marker.visible = false;
 			showingLocations = locations;
-		}
+    }
+
+      // if (markers.id !== showingLocations.id) {
+      //   markers.setVisible(false)
+      // }
+    // markers.filter(marker => { marker.setVisible(false) });
+
+
     // Sort location list by title
     locations.sort(sortBy('title'));
 
@@ -52,8 +65,8 @@ class NeighbourhoodMapApp extends React.Component {
           />
           <ListView
             locations={locations}
-            markers={markers}
             query={query}
+            markers={markers}
             updateQuery={this.updateQuery}
             showingLocations={showingLocations}
           />

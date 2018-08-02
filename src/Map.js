@@ -9,19 +9,19 @@ class Map extends React.Component {
 
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
-          const map = new google.maps.Map(this.refs.map, {
+          let map = new google.maps.Map(this.refs.map, {
             center: {
             lat: 54.58488,
             lng: -0.97010},
             zoom: 15,
             mapTypeId: 'hybrid'
           });
+
             // Info Window
             const largeInfowindow = new google.maps.InfoWindow();
             // Bounds fit everything we want the user to see
             const bounds = new google.maps.LatLngBounds();
               // Markers
-              let locationWithMarkers = [];
               locations.map((location) => {
                 const marker = new google.maps.Marker({
                   position: location.position,
@@ -31,21 +31,27 @@ class Map extends React.Component {
                   animation: google.maps.Animation.DROP,
                 });
 
+                // To add the marker to the map, call setMap();
+                marker.setMap(map);
+
                 // Add click event to open info window when marker is clicked
                 marker.addListener('click', function() {
                   populateInfoWindow(this, largeInfowindow);
                 });
 
+                // Push markers to markers array
+                // markers.push(marker);
                 // Set marker as a property of each location
                 location.marker = marker;
-                // Push this new marker property to locations array
-                locationWithMarkers.push(location);
                 console.log('locations:', location);
+                // console.log(marker)
 
                 // Extend boundaries of the map for each marker
                 bounds.extend(marker.position);
                 // Tell the map to fit itself to these bounds
                 map.fitBounds(bounds);
+                console.log('this', this)
+
               }); //end of locations .map
 
           // Populate infowindows with info when a marker is clicked.
@@ -62,8 +68,8 @@ class Map extends React.Component {
             }
           } // End populate info window function
       }else {
-        this.props.onError();
-         // Handle error if map doesn't load
+        // this.props.onError();
+         // Need to Handle error if map doesn't load
       }
     }
   } // End of componentWillReceiveProps
