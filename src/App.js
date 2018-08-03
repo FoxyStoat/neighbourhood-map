@@ -14,7 +14,7 @@ class NeighbourhoodMapApp extends React.Component {
     // List of locations, from json file data
     locations: data,
     query: '',
-    // markers: [],
+    markers: [],
   };
 
   // Update the state of query
@@ -28,27 +28,35 @@ class NeighbourhoodMapApp extends React.Component {
     const { locations, query, markers } = this.state;
 
     // Filter our locations based of a certain pattern
-    let showingLocations;
+    let showingLocations = [];
      // If there is a specific query
     if (query) {
       // If there are any special characters in our query
-			// escape them and i = ignore case
-			const match = new RegExp(escapeRegExp(query), 'i');
-      showingLocations = locations.filter((location) => match.test(location.title));
-      // console.log('showingLocations', showingLocations)
-      locations.marker.setVisible(true);
-      // showingLocations.marker.setVisible(true);
-		}else{
-      locations.marker.setVisible(false);
-      // locations.marker.visible = false;
-			showingLocations = locations;
-    }
-
-      // if (markers.id !== showingLocations.id) {
-      //   markers.setVisible(false)
-      // }
-    // markers.filter(marker => { marker.setVisible(false) });
-
+      for (let i = 0; i < locations.length; i++) {
+			  // escape them and i = ignore case
+        const match = new RegExp(escapeRegExp(query), 'i');
+        // Iterate over markers array and set it equal to showinglocations
+        showingLocations = markers.filter((m) => match.test(m.title));
+        // console.log('markers', markers);
+        // console.log('showingLocations', showingLocations);
+        // If markers title is included in the query
+        if (markers[i].title.toLowerCase().includes(query.toLowerCase())){
+          // set those markers to show
+          markers[i].setVisible(true);
+        }else {
+          // set the other markers to hide
+          markers[i].setVisible(false);
+        }
+      } //End of loop
+		}else {
+			// else show the locations list and markers again
+      for (var i = 0; i < locations.length; i++) {
+        showingLocations = locations;
+          if (markers[i]) {
+            markers[i].setVisible(true);
+          }
+      }
+    } //End of if (query) statement
 
     // Sort location list by title
     locations.sort(sortBy('title'));
@@ -66,7 +74,6 @@ class NeighbourhoodMapApp extends React.Component {
           <ListView
             locations={locations}
             query={query}
-            markers={markers}
             updateQuery={this.updateQuery}
             showingLocations={showingLocations}
           />

@@ -2,8 +2,8 @@ import React from 'react';
 import LocationFilter from './LocationFilter';
 
 class ListView extends React.Component {
-  render() {
 
+  render() {
     const { locations, query, updateQuery, showingLocations } = this.props;
 
     return (

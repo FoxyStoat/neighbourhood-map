@@ -9,6 +9,7 @@ class Map extends React.Component {
 
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
+
           let map = new google.maps.Map(this.refs.map, {
             center: {
             lat: 54.58488,
@@ -30,7 +31,6 @@ class Map extends React.Component {
                   id: location.id,
                   animation: google.maps.Animation.DROP,
                 });
-
                 // To add the marker to the map, call setMap();
                 marker.setMap(map);
 
@@ -40,11 +40,13 @@ class Map extends React.Component {
                 });
 
                 // Push markers to markers array
-                // markers.push(marker);
+                markers.push(marker);
+                this.setState({ markers: markers });
                 // Set marker as a property of each location
-                location.marker = marker;
+                // location.marker = marker;
+
                 console.log('locations:', location);
-                // console.log(marker)
+                // console.log(marker);
 
                 // Extend boundaries of the map for each marker
                 bounds.extend(marker.position);
