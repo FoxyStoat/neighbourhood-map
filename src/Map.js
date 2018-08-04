@@ -17,7 +17,6 @@ class Map extends React.Component {
             zoom: 15,
             mapTypeId: 'hybrid'
           });
-
             // Info Window
             const largeInfowindow = new google.maps.InfoWindow();
             // Bounds fit everything we want the user to see
@@ -42,18 +41,17 @@ class Map extends React.Component {
                 // Push markers to markers array
                 markers.push(marker);
                 this.setState({ markers: markers });
+
                 // Set marker as a property of each location
                 // location.marker = marker;
-
-                console.log('locations:', location);
+                // console.log('locations:', location);
                 // console.log(marker);
 
                 // Extend boundaries of the map for each marker
                 bounds.extend(marker.position);
                 // Tell the map to fit itself to these bounds
                 map.fitBounds(bounds);
-                console.log('this', this)
-
+                // console.log('this', this)
               }); //end of locations .map
 
           // Populate infowindows with info when a marker is clicked.
