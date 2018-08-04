@@ -22,10 +22,24 @@ class NeighbourhoodMapApp extends React.Component {
     this.setState({ query: query });
   }
 
+
   render() {
     console.log('Props', this.state);
     console.log('this:', this);
     const { locations, query, markers } = this.state;
+
+
+  function makeVisible () {
+    // else show the locations list and markers again
+    for (let i = 0; i < locations.length; i++) {
+      // show the list of locations
+      showingLocations = locations;
+        if (markers[i]) {
+          // make markers visible
+          markers[i].setVisible(true);
+        }
+    }
+  }
 
     // Filter our locations based of a certain pattern
     let showingLocations = [];
@@ -49,13 +63,7 @@ class NeighbourhoodMapApp extends React.Component {
         }
       } //End of loop
 		}else {
-			// else show the locations list and markers again
-      for (var i = 0; i < locations.length; i++) {
-        showingLocations = locations;
-          if (markers[i]) {
-            markers[i].setVisible(true);
-          }
-      }
+      makeVisible();
     } //End of if (query) statement
 
     // Sort location list by title
