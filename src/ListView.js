@@ -4,7 +4,7 @@ import LocationFilter from './LocationFilter';
 class ListView extends React.Component {
 
   render() {
-    const { locations, query, updateQuery, showingLocations } = this.props;
+    const { locations, query, updateQuery, showingLocations, locationItemClick } = this.props;
 
     return (
       <div className="list-view-container">
@@ -20,8 +20,11 @@ class ListView extends React.Component {
             {showingLocations.map(location => (
               <li
                 key={location.id}
+                onClick={event => locationItemClick(event.target)} // On location click in the listview
                 className="location">
+                <a>
                   {location.title}
+                </a>
               </li>
             ))}
           </ul>

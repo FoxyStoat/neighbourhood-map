@@ -18,7 +18,7 @@ class Map extends React.Component {
             mapTypeId: 'hybrid'
           });
             // Info Window
-            const largeInfowindow = new google.maps.InfoWindow();
+            const infowindow = new google.maps.InfoWindow();
             // Bounds fit everything we want the user to see
             const bounds = new google.maps.LatLngBounds();
               // Markers
@@ -35,7 +35,7 @@ class Map extends React.Component {
 
                 // Add click event to open info window when marker is clicked
                 marker.addListener('click', function() {
-                  populateInfoWindow(this, largeInfowindow);
+                  populateInfoWindow(this, infowindow);
                 });
 
                 // Push markers to markers array

@@ -22,32 +22,37 @@ class NeighbourhoodMapApp extends React.Component {
     this.setState({ query: query });
   }
 
+  // On location click of the list view
+  // Todo: needs to display unique info about that location
+  // and animate the associated marker
+  locationItemClick = (listItem) => {
+    console.log(listItem);
+  };
 
   render() {
-    console.log('Props', this.state);
-    console.log('this:', this);
+    // console.log('Props', this.state);
+    // console.log('this:', this);
     const { locations, query, markers } = this.state;
 
-
-  function makeVisible () {
-    // else show the locations list and markers again
-    for (let i = 0; i < locations.length; i++) {
-      // show the list of locations
-      showingLocations = locations;
-        if (markers[i]) {
-          // make markers visible
-          markers[i].setVisible(true);
-        }
+    function makeVisible () {
+      // else show the locations list and markers again
+      for (let i = 0; i < locations.length; i++) {
+        // show the list of locations
+        showingLocations = locations;
+          if (markers[i]) {
+            // make markers visible
+            markers[i].setVisible(true);
+          }
+      }
     }
-  }
 
     // Filter our locations based of a certain pattern
     let showingLocations = [];
-     // If there is a specific query
+      // If there is a specific query
     if (query) {
       // If there are any special characters in our query
       for (let i = 0; i < locations.length; i++) {
-			  // escape them and i = ignore case
+        // escape them and i = ignore case
         const match = new RegExp(escapeRegExp(query), 'i');
         // Iterate over markers array and set it equal to showinglocations
         showingLocations = markers.filter((m) => match.test(m.title));
@@ -62,8 +67,8 @@ class NeighbourhoodMapApp extends React.Component {
           markers[i].setVisible(false);
         }
       } //End of loop
-		}else {
-      makeVisible();
+      }else {
+        makeVisible();
     } //End of if (query) statement
 
     // Sort location list by title
@@ -78,12 +83,14 @@ class NeighbourhoodMapApp extends React.Component {
           <Map
             locations={locations}
             markers={markers}
+            locationItemClick={this.locationItemClick}
           />
           <ListView
             locations={locations}
             query={query}
             updateQuery={this.updateQuery}
             showingLocations={showingLocations}
+            locationItemClick={this.locationItemClick}
           />
         </div>
       </div>
