@@ -40,6 +40,7 @@ class Map extends React.Component {
 
                 // Push markers to markers array
                 markers.push(marker);
+                // Set State of markers
                 this.setState({ markers: markers });
 
                 // Set marker as a property of each location
@@ -59,7 +60,8 @@ class Map extends React.Component {
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
               infowindow.marker = marker;
-              infowindow.setContent('<div>' + marker.title + '</div>');
+              infowindow.setContent
+              ('<div>' + marker.title + '</div>');
               infowindow.open(map, marker);
               // Make sure the marker property is cleared if the infowindow is closed.
               infowindow.addListener('closeclick',function(){

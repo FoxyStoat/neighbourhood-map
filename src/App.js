@@ -15,7 +15,8 @@ class NeighbourhoodMapApp extends React.Component {
     locations: data,
     query: '',
     markers: [],
-  };
+    showingLocations: [],
+  }
 
   // Update the state of query
   updateQuery = (query) => {
@@ -25,9 +26,25 @@ class NeighbourhoodMapApp extends React.Component {
   // On location click of the list view
   // Todo: needs to display unique info about that location
   // and animate the associated marker
-  locationItemClick = (listItem) => {
-    console.log(listItem);
-  };
+  locationItemClick = (locationItem) => {
+    // Open up the associated marker info window
+    console.log(locationItem);
+    // Animate the associated marker
+    this.animateMarker(locationItem)
+};
+
+  animateMarker = () => {
+  //  this.state.markers.filter((marker) => {
+  //   //  map over locations array and try match
+  //   //  filter marker to the clicked location item?????
+
+
+  //   // if (marker.getAnimation() !== null) {
+  //   //   marker.setAnimation(null);
+  //   // } else {
+  //     marker.setAnimation(Animation=2);
+  //   })
+  }
 
   render() {
     // console.log('Props', this.state);
@@ -37,7 +54,7 @@ class NeighbourhoodMapApp extends React.Component {
     function makeVisible () {
       // else show the locations list and markers again
       for (let i = 0; i < locations.length; i++) {
-        // show the list of locations
+        // show the list of original locations
         showingLocations = locations;
           if (markers[i]) {
             // make markers visible
