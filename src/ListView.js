@@ -17,10 +17,10 @@ class ListView extends React.Component {
           {/* A view list of location names which displays
           all locations by default */}
           <ul role="navigation" className="location-list">
-            {showingLocations.map(location => (
+            {showingLocations.map((location) => (
               <li
                 key={location.id}
-                onClick={event => locationItemClick(event.target)} // On location click in the listview
+                onClick={event => locationItemClick(location)} // On location click in the listview
                 className="location">
                 <a>
                   {location.title}

@@ -23,27 +23,21 @@ class NeighbourhoodMapApp extends React.Component {
     this.setState({ query: query });
   }
 
-  // On location click of the list view
-  // Todo: needs to display unique info about that location
-  // and animate the associated marker
+  /*
+  * On location click of the list view display unique information about
+  * that clicked location and animate the associated marker
+  */
   locationItemClick = (locationItem) => {
-    // Open up the associated marker info window
+    // Filter over markers array and compare the title to the clicked location list title
+    let selectedLocation = this.state.markers.filter((marker)=> marker.title === locationItem.title)
+    window.google.maps.event.trigger(selectedLocation[0], 'click')
+      // Animate the marker
+      selectedLocation[0].setAnimation(window.google.maps.Animation.BOUNCE)
+      setTimeout(function(){
+        // turn off the animation after 3 secs
+        selectedLocation[0].setAnimation(null);
+      }, 1000);
     console.log(locationItem);
-    // Animate the associated marker
-    this.animateMarker(locationItem)
-};
-
-  animateMarker = () => {
-  //  this.state.markers.filter((marker) => {
-  //   //  map over locations array and try match
-  //   //  filter marker to the clicked location item?????
-
-
-  //   // if (marker.getAnimation() !== null) {
-  //   //   marker.setAnimation(null);
-  //   // } else {
-  //     marker.setAnimation(Animation=2);
-  //   })
   }
 
   render() {
