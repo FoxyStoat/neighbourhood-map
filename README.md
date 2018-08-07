@@ -31,6 +31,16 @@ See project [rubric](https://github.com/FoxyStoat/neighbourhood-map#requirements
 3. Run the app using $ npm start.
 4. App can be seen at: localhost:3000 which should open automatically.
 
+**Service Worker**
+
+The service worker is only implemented during production build! To run it:
+
+1. Download or Clone this Repository.
+2. Run $ npm install to install the project dependencies.
+3. $ npm run build.
+4. $ npm run serve
+4. Localhost:5000
+
 ## Requirements
 
 **Meets Specifications**
