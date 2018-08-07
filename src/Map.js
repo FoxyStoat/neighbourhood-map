@@ -42,9 +42,6 @@ class Map extends React.Component {
                 markers.push(marker);
                 // Set State of markers
                 this.setState({ markers: markers });
-
-                // Set marker as a property of each location
-                // location.marker = marker;
                 // console.log('locations:', location);
                 // console.log(marker);
 
@@ -78,7 +75,9 @@ class Map extends React.Component {
   render(){
     return (
     <div>
-      <div id="map" ref="map"></div>
+      <div id="map" ref="map" role="application">
+      loading map...
+      </div>
     </div>
     )
   }
