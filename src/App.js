@@ -34,7 +34,7 @@ class NeighbourhoodMapApp extends React.Component {
       // Animate the marker
       selectedLocation[0].setAnimation(window.google.maps.Animation.BOUNCE)
       setTimeout(function(){
-        // turn off the animation after 3 secs
+        // turn off the animation after 1 second
         selectedLocation[0].setAnimation(null);
       }, 1000);
     console.log(locationItem);
