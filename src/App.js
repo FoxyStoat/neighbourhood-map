@@ -16,6 +16,21 @@ class NeighbourhoodMapApp extends React.Component {
     query: '',
     markers: [],
     showingLocations: [],
+    locationImages: []
+  }
+
+  componentDidMount() {
+    this.getImages();
+  }
+
+  // Fetch data (images) from Flickr API
+  getImages = () => {
+
+    const myKey = '586ff04f3c463d0749c713a35bb5e64c';
+    const authToken = '72157694167229690-8c3ba4d6adb6cc63';
+    const sig = '24344fdbf9be0ef1009aa7e4df0bd1a8';
+
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${myKey}&tags=saltburn-by-the-sea&woe_id=33906&per_page=23&format=json&nojsoncallback=1&auth_token=${authToken}&api_sig=${sig}`)
   }
 
   // Update the state of query
@@ -53,7 +68,7 @@ class NeighbourhoodMapApp extends React.Component {
   render() {
     // console.log('Props', this.state);
     // console.log('this:', this);
-    const { locations, query, markers } = this.state;
+    const { locations, query, markers, images } = this.state;
 
     function makeVisible () {
       // else show the locations list and markers again
