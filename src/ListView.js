@@ -23,6 +23,7 @@ class ListView extends React.Component {
                 role='button'
                 key={location.id}
                 onClick={event => locationItemClick(location)} // On location click in the listview
+                onKeyPress={event => locationItemClick(location)} // On location key enter in listview a11y
                 className="location">
                 <a>
                   {location.title}

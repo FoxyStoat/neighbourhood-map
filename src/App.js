@@ -40,6 +40,16 @@ class NeighbourhoodMapApp extends React.Component {
     console.log(locationItem);
   }
 
+  /*
+  * A11y, to be able to press enter on location list
+  * it is tied to the directly above function "locationItemClick"
+  */
+    handleKeyPress = (target, item, event) => {
+    if(item.charCode === 13){
+      this.locationItemClick(target, event)
+    }
+  }
+
   render() {
     // console.log('Props', this.state);
     // console.log('this:', this);
@@ -102,6 +112,7 @@ class NeighbourhoodMapApp extends React.Component {
             updateQuery={this.updateQuery}
             showingLocations={showingLocations}
             locationItemClick={this.locationItemClick}
+            onKeyPress={this.handleKeyPress} //a11y on enter key press of location
           />
         </div>
       </div>
