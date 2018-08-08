@@ -12,8 +12,8 @@ class Map extends React.Component {
 
           let map = new google.maps.Map(this.refs.map, {
             center: {
-            lat: 54.58488,
-            lng: -0.97010},
+            lat: 54.579,
+            lng: -0.981},
             zoom: 15,
             mapTypeId: 'hybrid'
           });
