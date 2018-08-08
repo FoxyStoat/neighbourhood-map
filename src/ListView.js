@@ -19,7 +19,7 @@ class ListView extends React.Component {
           <ul role="navigation" className="location-list">
             {showingLocations.map((location) => (
               <li
-                tabindex='0'
+                tabIndex='0'
                 role='button'
                 key={location.id}
                 onClick={event => locationItemClick(location)} // On location click in the listview
