@@ -15,22 +15,20 @@ class NeighbourhoodMapApp extends React.Component {
     locations: data,
     query: '',
     markers: [],
-    showingLocations: [],
-    locationImages: []
-  }
-
-  componentDidMount() {
-    this.getImages();
-  }
+    imagesData: [],
+  };
 
   // Fetch data (images) from Flickr API
-  getImages = () => {
+  componentDidMount() {
+    const myKey = 'f68095d9996784e5a817d91ba7e0a79d';
 
-    const myKey = '586ff04f3c463d0749c713a35bb5e64c';
-    const authToken = '72157694167229690-8c3ba4d6adb6cc63';
-    const sig = '24344fdbf9be0ef1009aa7e4df0bd1a8';
-
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${myKey}&tags=saltburn-by-the-sea&woe_id=33906&per_page=23&format=json&nojsoncallback=1&auth_token=${authToken}&api_sig=${sig}`)
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${myKey}&tags=saltburn-by-the-sea&woe_id=33906&per_page=23&page=1&format=json&nojsoncallback=1`)
+    .then((response) => response.json())
+    .then((images) => {
+      // console.log(JSON.stringify(images));
+      // console.log("image data loaded ok");
+      this.setState({ imagesData: images });
+    });
   }
 
   // Update the state of query
@@ -52,7 +50,7 @@ class NeighbourhoodMapApp extends React.Component {
         // turn off the animation after 1 second
         selectedLocation[0].setAnimation(null);
       }, 1000);
-    console.log(locationItem);
+    // console.log(locationItem);
   }
 
   /*
@@ -61,14 +59,14 @@ class NeighbourhoodMapApp extends React.Component {
   */
     handleKeyPress = (target, item, event) => {
     if(item.charCode === 13){
-      this.locationItemClick(target, event)
+      this.locationItemClick(target, event);
     }
   }
 
   render() {
     // console.log('Props', this.state);
     // console.log('this:', this);
-    const { locations, query, markers, images } = this.state;
+    const { locations, query, markers, imagesData } = this.state;
 
     function makeVisible () {
       // else show the locations list and markers again
@@ -120,6 +118,7 @@ class NeighbourhoodMapApp extends React.Component {
             locations={locations}
             markers={markers}
             locationItemClick={this.locationItemClick}
+            locationImages={imagesData} //Flikr Images data array
           />
           <ListView
             locations={locations}
