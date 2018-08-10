@@ -68,6 +68,7 @@ class Map extends React.Component {
       }else {
         // this.props.onError();
          // Need to Handle error if map doesn't load
+         document.write('<div><h1>Sorry there was an error loading Google Map</h1><p>Try refresh the bowser!</p></div>');
       }
     }
   } // End of componentWillReceiveProps
