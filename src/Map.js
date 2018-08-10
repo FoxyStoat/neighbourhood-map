@@ -5,7 +5,7 @@ class Map extends React.Component {
 
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
     const google = window.google;
-    const { locations, markers } = this.props;
+    const { locations, markers, locationImages } = this.props;
 
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {

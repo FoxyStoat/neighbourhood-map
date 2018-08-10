@@ -36,7 +36,6 @@ class NeighbourhoodMapApp extends React.Component {
 
   // To display the images with the fetched data
   addImages = (jData) => {
-
     let locationImages = jData.photos.photo.map((pic) => {
       // src path location of the image
       let srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
@@ -44,13 +43,17 @@ class NeighbourhoodMapApp extends React.Component {
         <figure className="fig">
           <img className="flickr-img" alt='Saltburn by the sea attraction' src={srcPath}/>
           <figCaption>
-            <a href="https://www.flickr.com/services/api/">Image source: Flickr</a>
+            <a href="https://www.flickr.com/services/api/">Image sourced from Flickr</a>
           </figCaption>
         </figure>
       )
     }) //End .map
     // Set state in array
-    this.setState({ locationImages: jData.photos.photo });
+    // pushes the whole function?
+    this.setState({ locationImages: locationImages });
+    // pushes just the photo data
+    // this.setState({ locationImages: jData.photos.photo });
+    // console.log(this.state.locationImages)
     console.log("images data loaded ok");
   } //End addImages
 
@@ -146,7 +149,7 @@ class NeighbourhoodMapApp extends React.Component {
             locations={locations}
             markers={markers}
             locationItemClick={this.locationItemClick}
-            locationImages={locationImages} //Flikr Images data array
+            locationImages={locationImages} //Flickr Images data array
           />
           <ListView
             locations={locations}
