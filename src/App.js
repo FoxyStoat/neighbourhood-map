@@ -50,7 +50,7 @@ class NeighbourhoodMapApp extends React.Component {
       )
     }) //End .map
     // Set state in array
-    this.setState({ locationImages: locationImages });
+    this.setState({ locationImages: jData.photos.photo });
     console.log("images data loaded ok");
   } //End addImages
 

@@ -74,10 +74,8 @@ class Map extends React.Component {
 
   render(){
     return (
-    <div>
       <div id="map" ref="map" role="application">
       loading map...
-      </div>
     </div>
     )
   }
