@@ -4,6 +4,10 @@ Project 8 Front End Nanodegree Udacity
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+This project also uses:
+* [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+* photos are from [Flickr API](https://www.flickr.com/services/api/)
+
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 * [Project Overview](https://github.com/FoxyStoat/neighbourhood-map#project-overview)
