@@ -16,7 +16,6 @@ class NeighbourhoodMapApp extends React.Component {
     query: '',
     markers: [],
     locationImages: [],
-    img: [],
   }
 
   componentWillMount = () => {
@@ -40,20 +39,12 @@ class NeighbourhoodMapApp extends React.Component {
     jData.photos.photo.map((pic) => {
       // src path location of the image
       let srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
-      // Link to Flickr to give attribution
-      let link = <a href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
       let img = <img className="flickr-img" alt='Saltburn by the sea attraction' src={srcPath}/>
-      return (
-        <figure className="fig">
-          ${img}
-          <figCaption>
-            ${link}
-          </figCaption>
-        </figure>
-      )
+      console.log('img', img)
+      console.log('srcPath', srcPath)
+      // set the state - pushes just the photo srcPath url
+      this.setState({ locationImages: srcPath });
     }) //End .map
-    // set the state - pushes just the photo data
-    this.setState({ locationImages: jData.photos.photo });
     console.log("images data loaded ok");
   } //End addImages
 
@@ -98,7 +89,7 @@ class NeighbourhoodMapApp extends React.Component {
   render() {
     // console.log('Props', this.state);
     // console.log('this:', this);
-    const { locations, query, markers, locationImages } = this.state;
+    const { locations, query, markers, locationImages, content } = this.state;
 
     function makeVisible () {
       // else show the locations list and markers again
@@ -150,7 +141,8 @@ class NeighbourhoodMapApp extends React.Component {
             locations={locations}
             markers={markers}
             locationItemClick={this.locationItemClick}
-            locationImages={locationImages} //Flickr Images data array
+            images={locationImages} //Flickr Images data array
+            content={content}
           />
           <ListView
             locations={locations}

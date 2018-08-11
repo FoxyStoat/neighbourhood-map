@@ -5,7 +5,7 @@ class Map extends React.Component {
 
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
     const google = window.google;
-    const { locations, markers } = this.props;
+    const { locations, markers, locationImages } = this.props;
 
     if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
       if (isScriptLoadSucceed) {
@@ -54,22 +54,21 @@ class Map extends React.Component {
 
           // Populate infowindows with info when a marker is clicked.
           function populateInfoWindow(marker, infowindow) {
-
+            let content =
+            `<div className"info-content-container">
+              <h3><strong>${marker.title}</strong></h3>
+                <figure className="fig">
+                <img className="flickr-img" alt="Saltburn by the sea attraction" src={locationImages}/>
+                  <figCaption>
+                  <a href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
+                  </figCaption>
+                </figure>
+            </div>`
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
               infowindow.marker = marker
+              infowindow.setContent(`${content}`)
               infowindow.open(map, marker)
-              infowindow.setContent(
-              `<div className="info-content-container">
-                <h3><strong>${marker.title}</strong></h3>
-                <figure className="fig">
-                  'I am image'
-                  <figCaption>
-                    'I will be fig caption'
-                  </figCaption>
-                </figure>
-              </div>`
-              )
               // Make sure the marker property is cleared if the infowindow is closed.
               infowindow.addListener('closeclick',function(){
                 infowindow.setMarker = null;
@@ -79,7 +78,7 @@ class Map extends React.Component {
       }else {
         // this.props.onError();
          // Need to Handle error if map doesn't load
-         document.write('<div><h1>Sorry there was an error loading Google Map</h1><p>Try refresh the bowser!</p></div>');
+         document.write('<div><h1>Sorry there was an error loading Google Map</h1><p>Try refresh the bowser or check internet connection!</p></div>');
       }
     }
   } // End of componentWillReceiveProps
