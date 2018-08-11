@@ -16,53 +16,51 @@ class NeighbourhoodMapApp extends React.Component {
     query: '',
     markers: [],
     locationImages: [],
-  };
+    img: [],
+  }
 
-  componentDidMount() {
-    // Fetch data (images from Flickr API)
+  componentWillMount = () => {
+    this.fetchImages()
+  }
+
+  // Fetch data (images from Flickr API)
+  fetchImages = () => {
     const myKey = 'f68095d9996784e5a817d91ba7e0a79d';
 
     fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${myKey}&tags=saltburn-by-the-sea&woe_id=33906&per_page=23&page=1&format=json&nojsoncallback=1`)
       .then(response => response.json())
-      .then((jData) => {
-        this.setState({
-          locationImages: jData.photos.photo
-        });
-        // console.log(JSON.stringify(jData))
-      })
+      .then((jData) => this.addImages(jData))
+      // console.log(JSON.stringify(images));
       // catch errors in error var and call requestError()
-      .catch(error => this.requestError(error));
-  };
-
-
+      .catch(error => this.requestError(error, 'image'));
+  }
 
   // To display the images with the fetched data
-  // addImages = (jData) => {
-  //   let locationImages = jData.photos.photo.map((pic) => {
-  //     // src path location of the image
-  //     let srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
-  //     return(
-  //       <figure className="fig">
-  //         <img className="flickr-img" alt='Saltburn by the sea attraction' src={srcPath}/>
-  //         <figCaption>
-  //           <a href="https://www.flickr.com/services/api/">Image sourced from Flickr</a>
-  //         </figCaption>
-  //       </figure>
-  //     )
-  //   }) //End .map
-  //   // Set state in array
-  //   // pushes the whole function?
-  //   // this.setState({ locationImages: locationImages });
-  //   // pushes just the photo data
-  //   this.setState({ locationImages: jData.photos.photo });
-  //   // console.log(this.state.locationImages)
-  //   console.log("images data loaded ok");
-  // } //End addImages
+  addImages = (jData) => {
+    jData.photos.photo.map((pic) => {
+      // src path location of the image
+      let srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
+      // Link to Flickr to give attribution
+      let link = <a href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
+      let img = <img className="flickr-img" alt='Saltburn by the sea attraction' src={srcPath}/>
+      return (
+        <figure className="fig">
+          ${img}
+          <figCaption>
+            ${link}
+          </figCaption>
+        </figure>
+      )
+    }) //End .map
+    // set the state - pushes just the photo data
+    this.setState({ locationImages: jData.photos.photo });
+    console.log("images data loaded ok");
+  } //End addImages
 
   // From the catch error in fetch - object of the request that failed
   requestError = (error) => {
     console.log(error)
-    alert('Sorry there was an issue getting data from Flickr API!');
+    // alert('Sorry there was an issue getting data from Flickr API!  Please try to refresh your browser, or try later.');
   };
 
   // Update the state of query

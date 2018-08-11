@@ -15,7 +15,7 @@ class Map extends React.Component {
             lat: 54.579,
             lng: -0.981},
             zoom: 15,
-            mapTypeId: 'hybrid'
+            mapTypeId: 'hybrid',
           });
             // Info Window
             const infowindow = new google.maps.InfoWindow();
@@ -54,15 +54,26 @@ class Map extends React.Component {
 
           // Populate infowindows with info when a marker is clicked.
           function populateInfoWindow(marker, infowindow) {
+
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
-              infowindow.marker = marker;
-              infowindow.setContent('<div>' + marker.title + '</div>');
-              infowindow.open(map, marker);
+              infowindow.marker = marker
+              infowindow.open(map, marker)
+              infowindow.setContent(
+              `<div className="info-content-container">
+                <h3><strong>${marker.title}</strong></h3>
+                <figure className="fig">
+                  'I am image'
+                  <figCaption>
+                    'I will be fig caption'
+                  </figCaption>
+                </figure>
+              </div>`
+              )
               // Make sure the marker property is cleared if the infowindow is closed.
               infowindow.addListener('closeclick',function(){
                 infowindow.setMarker = null;
-              });
+              })
             }
           } // End populate info window function
       }else {
