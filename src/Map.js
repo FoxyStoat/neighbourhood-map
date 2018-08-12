@@ -23,12 +23,14 @@ class Map extends React.Component {
             const bounds = new google.maps.LatLngBounds();
               // Markers
               locations.map((location) => {
+                // console.log('locations',locations)
                 const marker = new google.maps.Marker({
                   position: location.position,
                   map: map,
                   title: location.title,
                   id: location.id,
                   animation: google.maps.Animation.DROP,
+                  img: location.img
                 });
                 // To add the marker to the map, call setMap();
                 marker.setMap(map);
@@ -54,17 +56,18 @@ class Map extends React.Component {
 
           // Populate infowindows with info when a marker is clicked.
           function populateInfoWindow(marker, infowindow) {
+
             let content =
             `<div>
               <h3><strong>${marker.title}</strong></h3>
               <figure>
-                <img id="flickr-img" alt="Saltburn by the sea attraction" src= https://farm1.staticflickr.com/910/41910522092_aea525fdd0.jpg/>
+                <img id="flickr-img" alt="Saltburn by the sea attraction" src={marker.img} />
                 <figCaption>
                   <a id="flickr-link" href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
                 </figCaption>
               </figure>
             </div>`;
-            console.log(content)
+            // console.log(content)
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
               infowindow.marker = marker

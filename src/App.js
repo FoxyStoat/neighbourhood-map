@@ -19,7 +19,7 @@ class NeighbourhoodMapApp extends React.Component {
   }
 
   componentWillMount = () => {
-    this.fetchImages()
+    this.fetchImages();
   }
 
   // Fetch data (images from Flickr API)
@@ -35,21 +35,19 @@ class NeighbourhoodMapApp extends React.Component {
 
   // To display the images with the fetched data
   addImages = (jData) => {
-      let srcPath = jData.photos.photo.map((pic) => {
+    let srcPath = jData.photos.photo.map((pic) => {
       // console.log(JSON.stringify(jData))
       // src path location of the image
       return srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
     }) //End .map
-    // set the state - pushes just the photo srcPath url
+    // set the state - pushes just the photo srcPath url to locationImages
     this.setState({ locationImages: srcPath });
-    // console.log('image', image)
-    console.log("images data loaded ok");
   } //End addImages
 
   // From the catch error in fetch - object of the request that failed
   requestError = (error) => {
     console.log(error)
-    // alert('Sorry there was an issue getting data from Flickr API!  Please try to refresh your browser, or try later.');
+    alert('Sorry there was an issue getting data from Flickr API!  Please try to refresh your browser, or try later.');
   };
 
   // Update the state of query
@@ -88,6 +86,14 @@ class NeighbourhoodMapApp extends React.Component {
     // console.log('Props', this.state);
     // console.log('this:', this);
     const { locations, query, markers, locationImages } = this.state;
+
+  /*
+  * Add each url from locationImages as a property to locations
+  * so I can access the url in map component
+  */
+    locationImages.map((url, index) => {
+      locations[index].img = url;
+    })
 
     function makeVisible () {
       // else show the locations list and markers again
