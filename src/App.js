@@ -162,3 +162,40 @@ class NeighbourhoodMapApp extends React.Component {
 }
 
 export default NeighbourhoodMapApp;
+
+/* RESOURCES
+  Apart from the course lessons I also used the following resources for extra help throughout this project:
+
+  // Async map script
+  * https://www.npmjs.com/package/react-async-script-loader
+  * https://stackoverflow.com/questions/41709765/how-to-load-the-google-maps-api-script-in-my-react-app-only-when-it-is-require
+  * https://stackoverflow.com/questions/43714895/google-is-not-defined-in-react-app-using-create-react-app
+
+  //Help with loading in importing data from a JSON file
+  * http://4dev.tech/2017/12/how-to-load-a-json-file-in-reactjs/
+  *https://stackoverflow.com/questions/29452822/how-to-fetch-data-from-local-json-file-on-react-native#37781882
+
+  // Filter
+  * https://www.youtube.com/watch?v=OlVkYnVXPl0
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+
+  //Help with a11y focus
+  https://stackoverflow.com/questions/27827234/keypress-event-handling-in-reactjs
+  * https://www.youtube.com/watch?v=Uw5Ij56RhME
+
+  //General Help
+  * https://stackoverflow.com/questions/22639534/pass-props-to-parent-component-in-react-js
+  - the two study jam sessions
+  * https://www.youtube.com/watch?v=Uw5Ij56RhME
+  * https://www.youtube.com/watch?v=p8QrDlluuc0
+
+  //API Fetch help
+  * https://stackoverflow.com/questions/6474427/using-flickr-api-to-search-photos-by-location-or-language
+  * https://davidwalsh.name/fetch
+  * https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html
+  * https://www.flickr.com/services/api/
+  * https://www.youtube.com/watch?v=RkXotG7YUek
+
+  //Error handling
+  * https://www.w3schools.com/jsref/met_doc_write.asp
+  */
