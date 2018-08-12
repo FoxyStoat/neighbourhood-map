@@ -145,7 +145,6 @@ class NeighbourhoodMapApp extends React.Component {
             locations={locations}
             markers={markers}
             locationItemClick={this.locationItemClick}
-            images={locationImages} //Flickr Images data array
           />
           <ListView
             locations={locations}
