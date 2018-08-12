@@ -55,15 +55,16 @@ class Map extends React.Component {
           // Populate infowindows with info when a marker is clicked.
           function populateInfoWindow(marker, infowindow) {
             let content =
-            `<div className"info-content-container">
+            `<div>
               <h3><strong>${marker.title}</strong></h3>
-                <figure className="fig">
-                <img className="flickr-img" alt="Saltburn by the sea attraction" src={locationImages}/>
-                  <figCaption>
-                  <a href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
-                  </figCaption>
-                </figure>
-            </div>`
+              <figure>
+                <img id="flickr-img" alt="Saltburn by the sea attraction" src= https://farm1.staticflickr.com/910/41910522092_aea525fdd0.jpg/>
+                <figCaption>
+                  <a id="flickr-link" href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
+                </figCaption>
+              </figure>
+            </div>`;
+            console.log(content)
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
               infowindow.marker = marker

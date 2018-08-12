@@ -29,22 +29,20 @@ class NeighbourhoodMapApp extends React.Component {
     fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${myKey}&tags=saltburn-by-the-sea&woe_id=33906&per_page=23&page=1&format=json&nojsoncallback=1`)
       .then(response => response.json())
       .then((jData) => this.addImages(jData))
-      // console.log(JSON.stringify(images));
       // catch errors in error var and call requestError()
-      .catch(error => this.requestError(error, 'image'));
+      .catch(error => this.requestError(error))
   }
 
   // To display the images with the fetched data
   addImages = (jData) => {
-    jData.photos.photo.map((pic) => {
+      let srcPath = jData.photos.photo.map((pic) => {
+      // console.log(JSON.stringify(jData))
       // src path location of the image
-      let srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
-      let img = <img className="flickr-img" alt='Saltburn by the sea attraction' src={srcPath}/>
-      console.log('img', img)
-      console.log('srcPath', srcPath)
-      // set the state - pushes just the photo srcPath url
-      this.setState({ locationImages: srcPath });
+      return srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
     }) //End .map
+    // set the state - pushes just the photo srcPath url
+    this.setState({ locationImages: srcPath });
+    // console.log('image', image)
     console.log("images data loaded ok");
   } //End addImages
 
@@ -89,7 +87,7 @@ class NeighbourhoodMapApp extends React.Component {
   render() {
     // console.log('Props', this.state);
     // console.log('this:', this);
-    const { locations, query, markers, locationImages, content } = this.state;
+    const { locations, query, markers, locationImages } = this.state;
 
     function makeVisible () {
       // else show the locations list and markers again
@@ -142,7 +140,6 @@ class NeighbourhoodMapApp extends React.Component {
             markers={markers}
             locationItemClick={this.locationItemClick}
             images={locationImages} //Flickr Images data array
-            content={content}
           />
           <ListView
             locations={locations}
