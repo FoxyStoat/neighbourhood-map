@@ -86,12 +86,18 @@ h2 {
   margin: 2em 0;
 }
 
-.info-content-container {
-  width: 30em;
+#flickr-img {
+  width: 15em;
 }
 
-.flickr-img {
-  width: 20em;
+#flickr-link {
+  color: #29f;
+	font-size: 1.3em;
+  text-decoration: none;
+}
+
+#flickr-link:hover {
+  text-decoration: underline;
 }
 
 /*----------------------------------
