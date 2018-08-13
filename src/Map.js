@@ -61,9 +61,9 @@ class Map extends React.Component {
             `<div>
               <h3><strong>${marker.title}</strong></h3>
               <figure>
-                <img id="flickr-img" alt="Saltburn by the sea attraction" src={marker.img} />
+                <img id="flickr-img" alt="Saltburn by the sea attraction" src=${marker.img} />
                 <figCaption>
-                  <a id="flickr-link" href="https://www.flickr.com/services/api/" target="blank" >Image sourced from Flickr</a>
+                  <a id="flickr-link" href="https://www.flickr.com/groups/1230483@N22/" target="blank" >Image sourced from Flickr</a>
                 </figCaption>
               </figure>
             </div>`;
@@ -71,7 +71,7 @@ class Map extends React.Component {
             // Check to make sure the infowindow is not already opened on this marker.
             if (infowindow.marker !== marker) {
               infowindow.marker = marker
-              infowindow.setContent(`${content}`)
+            infowindow.setContent(`${content}`)
               infowindow.open(map, marker)
               // Make sure the marker property is cleared if the infowindow is closed.
               infowindow.addListener('closeclick',function(){
