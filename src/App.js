@@ -92,7 +92,7 @@ class NeighbourhoodMapApp extends React.Component {
   * so I can access the url in map component
   */
     locationImages.map((url, index) => {
-      locations[index].img = url;
+      markers[index].img = url;
     })
 
     function makeVisible () {
