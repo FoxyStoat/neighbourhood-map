@@ -26,7 +26,7 @@ See project [rubric](https://github.com/FoxyStoat/neighbourhood-map#requirements
 
 ##### Screenshots of Finished Project
 
-![screenshot of finished project](screenshot-map-app.png "screenshot of finished project")
+![screenshot of finished project](screenshot map-app.png "screenshot of finished project")
 
 ## How To Run This App
 
