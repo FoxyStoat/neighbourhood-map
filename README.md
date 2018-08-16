@@ -24,9 +24,9 @@ The user of the app will be able to view a set of locations that provide informa
 The app must be responsive and be accessible.  The use of a service worker to allow for offline usage.
 See project [rubric](https://github.com/FoxyStoat/neighbourhood-map#requirements) for all project specifications.
 
-##### Screenshots of Finished Project
+### Screenshot of Finished Project
 
-![screenshot of finished project](screenshot map-app.png "screenshot of finished project")
+![screenshot of finished project](screenshot-map-app.png "screenshot of finished project")
 
 ## How To Run This App
 
