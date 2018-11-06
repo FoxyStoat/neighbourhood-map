@@ -5,7 +5,6 @@
   "dependencies": {
     "@types/google-maps": "^3.2.0",
     "escape-string-regexp": "^1.0.5",
-    "hoek": "^6.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-async-script-loader": "^0.3.0",
