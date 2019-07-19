@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/google-maps": "^3.2.0",
+    "@types/google-maps": "^3.2.1",
     "escape-string-regexp": "^1.0.5",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.2",
     "react": "^16.6.0",
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.6.0",
